@@ -9,8 +9,12 @@ export default function ThemeContextProvider(props) {
     dark: {syntax: "#ddd", ui: "#333", bg: "#555"},
   });
 
+  const toggleTheme = () => {
+    setTheme((prev) => ({...prev, isLightTheme: !prev.isLightTheme}));
+  };
+
   return (
-    <ThemeContext.Provider value={{...theme, setTheme}}>
+    <ThemeContext.Provider value={{...theme, toggleTheme}}>
       {props.children}
     </ThemeContext.Provider>
   );
